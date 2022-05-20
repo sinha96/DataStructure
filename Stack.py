@@ -1,6 +1,6 @@
 class Stack:
 	"""
-	Class to create stack data structure
+	Class to create stack data structure (FILO)
 	"""
 	def __init__(self):
 		self.stack = list()
