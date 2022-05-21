@@ -19,8 +19,13 @@ class SLinkedList:
         prints linked list's nodes
         """
         val = self.head
+
         while val is not None:
-            print(val.data)
+            if val.next is None:
+                ender = '\n'
+            else:
+                ender = '->'
+            print(val.data, end=ender)
             val = val.next
 
     def at_begining(self, data):
