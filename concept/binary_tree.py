@@ -48,12 +48,13 @@ class Node:
 		return res
 
 
-tree = Node(10)
-tree.insert(5)
-tree.insert(16)
-tree.insert(1012)
-tree.insert(50321)
-print(tree.inorder(tree))
-print(tree.pre_order(tree))
-print(tree.post_order(tree))
+if __name__ == '__main__':
+	tree = Node(10)
+	tree.insert(5)
+	tree.insert(16)
+	tree.insert(1012)
+	tree.insert(50321)
+	print(tree.inorder(tree))
+	print(tree.pre_order(tree))
+	print(tree.post_order(tree))
 

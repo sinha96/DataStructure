@@ -75,14 +75,15 @@ class DLinkedList:
 		return 1
 
 
-dllist = DLinkedList()
-dllist.push(10)
-dllist.push(20)
-dllist.push(30)
-dllist.viewer()
+if __name__ == '__main__':
+	dllist = DLinkedList()
+	dllist.push(10)
+	dllist.push(20)
+	dllist.push(30)
+	dllist.viewer()
 
-dllist.insert(dllist.head.next, 100)
-dllist.viewer()
+	dllist.insert(dllist.head.next, 100)
+	dllist.viewer()
 
-dllist.append(45)
-dllist.viewer()
+	dllist.append(45)
+	dllist.viewer()

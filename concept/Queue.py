@@ -24,9 +24,10 @@ class Queue:
 		return self.queue.pop()
 
 
-TheQueue = Queue()
-TheQueue.add("Mon")
-TheQueue.add("Tue")
-TheQueue.add("Wed")
-print(TheQueue.remove())
-print(TheQueue.remove())
+if __name__ == '__main__':
+	TheQueue = Queue()
+	TheQueue.add("Mon")
+	TheQueue.add("Tue")
+	TheQueue.add("Wed")
+	print(TheQueue.remove())
+	print(TheQueue.remove())

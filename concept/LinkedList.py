@@ -69,22 +69,23 @@ class SLinkedList:
         head = None
 
 
-sll = SLinkedList()
-sll.head = Node('Priyanshu')
-e2 = Node('Shekhar')
-e3 = Node('Sinha')
+if __name__ == '__main__':
+    sll = SLinkedList()
+    sll.head = Node('Priyanshu')
+    e2 = Node('Shekhar')
+    e3 = Node('Sinha')
 
-sll.head.next = e2
-e2.next = e3
+    sll.head.next = e2
+    e2.next = e3
 
-sll.listprint()
+    sll.listprint()
 
-sll.at_begining('Hi!')
-sll.listprint()
+    sll.at_begining('Hi!')
+    sll.listprint()
 
-sll.at_middle(middle_node=sll.head, data="Mr")
-sll.listprint()
+    sll.at_middle(middle_node=sll.head, data="Mr")
+    sll.listprint()
 
-sll.remove_node('Shekhar')
-sll.listprint()
+    sll.remove_node('Shekhar')
+    sll.listprint()
 
