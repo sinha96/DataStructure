@@ -33,11 +33,13 @@ class Stack:
 			return 'Stack is empty'
 		return self.stack.pop()
 
+if "__main__"==__name__:
 
-stck = Stack()
-stck.add(1)
-stck.add(2)
-stck.add(3)
-stck.add(4)
-stck.add(5)
-print(stck.peek())
+	stck = Stack()
+	stck.add(1)
+	stck.add(2)
+	stck.add(3)
+	stck.add(4)
+	stck.add(5)
+	print(stck.peek())
+
