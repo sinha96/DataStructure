@@ -2,7 +2,7 @@ class Node:
     """
     Creates a Node with data and next node info
     """
-    def __init__(self, data=None):
+    def __init__(self, data):
         self.data = data
         self.next = None
 
