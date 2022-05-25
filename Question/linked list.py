@@ -4,7 +4,8 @@ from DataStructure.concept.LinkedList import SLinkedList
 # 2. Find Length of a Linked List
 # 3. Search an element in a Linked List
 # 4. Access nth element of the linked list
-# 5. Remove duplicates from a sorted linked list
+# 5. Remove duplicates from a sorted and unsorted linked list
+# 6. Swap nodes in a linked list without swapping data
 
 
 class LinkedList(SLinkedList):
@@ -112,20 +113,57 @@ class LinkedList(SLinkedList):
 				cur = cur.next
 		return 1
 
+	def swap(self, x, y):
+		if x == y:
+			print('equal')
+			return 1
+		prev_x = None
+		cur_x = self.head
+		while cur_x is not None and cur_x.data != x:
+			prev_x = cur_x
+			cur_x = cur_x.next
+
+		prev_y = None
+		cur_y = self.head
+		while cur_y is not None and cur_y.data != y:
+			prev_y = cur_y
+			cur_y = cur_y.next
+
+		if cur_x is None or cur_y is None:
+			print('none')
+			return 1
+		if prev_x is not None:
+			prev_x.next = cur_y
+		else:
+			self.head = cur_y
+
+		if prev_y is not None:
+			prev_y.next = cur_x
+		else:
+			self.head = cur_x
+
+		tmp = cur_x.next
+		cur_x.next = cur_y.next
+		cur_y.next = tmp
+
 
 if __name__ == '__main__':
 	llist = LinkedList()
 	llist.at_begining(1)
+	llist.at_begining(6)
+	llist.at_begining(5)
 	llist.at_begining(4)
-	llist.at_begining(1)
-	llist.at_begining(12)
+	llist.at_begining(3)
+	llist.at_begining(2)
 	llist.at_begining(1)
 	llist.listprint()
-	if llist.search(llist.head, 12):
+	if llist.search(llist.head, 2):
 		print('Present')
 	else:
 		print('Absent')
 	print(f'{llist.iloc(1)} At 2nd index of linked list')
+	llist.swap(4, 1)
+	llist.listprint()
 	llist.remove_duplicates(llist.head)
 	llist.listprint()
 	print(f'Length of the Linked List is: {llist.get_len()}.')
