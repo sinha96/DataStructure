@@ -6,6 +6,8 @@ from DataStructure.concept.LinkedList import SLinkedList
 # 4. Access nth element of the linked list
 # 5. Remove duplicates from a sorted and unsorted linked list
 # 6. Swap nodes in a linked list without swapping data
+# 7. Pairwise swap elements of a given linked list
+# 8. Move last element to front of a given Linked List
 
 
 class LinkedList(SLinkedList):
@@ -115,7 +117,6 @@ class LinkedList(SLinkedList):
 
 	def swap(self, x, y):
 		if x == y:
-			print('equal')
 			return 1
 		prev_x = None
 		cur_x = self.head
@@ -130,7 +131,6 @@ class LinkedList(SLinkedList):
 			cur_y = cur_y.next
 
 		if cur_x is None or cur_y is None:
-			print('none')
 			return 1
 		if prev_x is not None:
 			prev_x.next = cur_y
@@ -145,6 +145,29 @@ class LinkedList(SLinkedList):
 		tmp = cur_x.next
 		cur_x.next = cur_y.next
 		cur_y.next = tmp
+
+	def swap_pairwise(self):
+		tmp = self.head
+
+		if tmp is None:
+			return
+
+		while tmp and tmp.next:
+			if tmp.data != tmp.next.data:
+				tmp.data, tmp.next.data = tmp.next.data, tmp.data
+			tmp = tmp.next.next
+
+	def to_front(self):
+		tmp = self.head
+		sec_last = None
+		if not tmp or not tmp.next:
+			return
+		while tmp and tmp.next:
+			sec_last = tmp
+			tmp = tmp.next
+		sec_last.next = None
+		tmp.next = self.head
+		self.head = tmp
 
 
 if __name__ == '__main__':
@@ -165,6 +188,10 @@ if __name__ == '__main__':
 	llist.swap(4, 1)
 	llist.listprint()
 	llist.remove_duplicates(llist.head)
+	llist.listprint()
+	llist.swap_pairwise()
+	llist.listprint()
+	llist.to_front()
 	llist.listprint()
 	print(f'Length of the Linked List is: {llist.get_len()}.')
 
