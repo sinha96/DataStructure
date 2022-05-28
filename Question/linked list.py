@@ -1,4 +1,4 @@
-from DataStructure.concept.LinkedList import SLinkedList
+from DataStructure.concept.LinkedList import SLinkedList, Node
 
 # 1. Write a function to delete a Linked List
 # 2. Find Length of a Linked List
@@ -8,6 +8,7 @@ from DataStructure.concept.LinkedList import SLinkedList
 # 6. Swap nodes in a linked list without swapping data
 # 7. Pairwise swap elements of a given linked list
 # 8. Move last element to front of a given Linked List
+# 9. Intersection of two Sorted Linked Lists
 
 
 class LinkedList(SLinkedList):
@@ -168,6 +169,29 @@ class LinkedList(SLinkedList):
 		sec_last.next = None
 		tmp.next = self.head
 		self.head = tmp
+
+	def sorted_intersect(self, a, b):
+
+		# base case
+		if a is None or b is None:
+			return None
+
+		# If both lists are non-empty
+		# Advance the smaller list and call recursively
+		if a.data < b.data:
+			return self.sorted_intersect(a.next, b)
+
+		if a.data > b.data:
+			return self.sorted_intersect(a, b.next)
+
+		# Below lines are executed only
+		# when a.data == b.data
+		temp = Node()
+		temp.data = a.data
+
+		# Advance both lists and call recursively
+		temp.next = self.sorted_intersect(a.next, b.next);
+		return temp
 
 
 if __name__ == '__main__':
