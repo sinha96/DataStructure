@@ -117,6 +117,9 @@ class LinkedList(SLinkedList):
 		return 1
 
 	def swap(self, x, y):
+		"""
+		Swap two nodes in a linked list
+		"""
 		if x == y:
 			return 1
 		prev_x = None
@@ -148,6 +151,9 @@ class LinkedList(SLinkedList):
 		cur_y.next = tmp
 
 	def swap_pairwise(self):
+		"""
+		Swap pairwise elements of a linked list
+		"""
 		tmp = self.head
 
 		if tmp is None:
@@ -159,6 +165,9 @@ class LinkedList(SLinkedList):
 			tmp = tmp.next.next
 
 	def to_front(self):
+		"""
+		Move last element to front of a linked list
+		"""
 		tmp = self.head
 		sec_last = None
 		if not tmp or not tmp.next:
@@ -171,6 +180,9 @@ class LinkedList(SLinkedList):
 		self.head = tmp
 
 	def sorted_intersect(self, a, b):
+		"""
+		Intersection of two sorted linked lists
+		"""
 
 		# base case
 		if a is None or b is None:
