@@ -1,4 +1,4 @@
-from DataStructure.concept.LinkedList import SLinkedList, Node
+from concept.LinkedList import SLinkedList, Node
 
 # 1. Write a function to delete a Linked List
 # 2. Find Length of a Linked List
@@ -9,6 +9,7 @@ from DataStructure.concept.LinkedList import SLinkedList, Node
 # 7. Pairwise swap elements of a given linked list
 # 8. Move last element to front of a given Linked List
 # 9. Intersection of two Sorted Linked Lists
+# 10. Reverse a Linked List in groups of given size
 
 
 class LinkedList(SLinkedList):
@@ -205,6 +206,26 @@ class LinkedList(SLinkedList):
 		temp.next = self.sorted_intersect(a.next, b.next);
 		return temp
 
+	def grp_reverse(self, head, n):
+		if head is None:
+			return None
+		current = head
+		nxt = None
+		prv = None
+		count = 0
+
+		while current is not None and count < n:
+			nxt = current.next
+			current.next = prv
+			prv = current
+			current = nxt
+			count += 1
+
+		if nxt is not None:
+			head.next = self.grp_reverse(nxt, n)
+
+		return prv
+
 
 if __name__ == '__main__':
 	llist = LinkedList()
@@ -228,6 +249,11 @@ if __name__ == '__main__':
 	llist.swap_pairwise()
 	llist.listprint()
 	llist.to_front()
+	llist.listprint()
+	print(llist.head.data)
+	print('performing group reverse')
+	llist.listprint()
+	llist.grp_reverse(llist.head, 2)
 	llist.listprint()
 	print(f'Length of the Linked List is: {llist.get_len()}.')
 
