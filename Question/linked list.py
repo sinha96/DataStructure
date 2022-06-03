@@ -1,4 +1,4 @@
-from concept.LinkedList import SLinkedList, Node
+from DataStructure import SLinkedList, Node
 
 # 1. Write a function to delete a Linked List
 # 2. Find Length of a Linked List
@@ -207,6 +207,12 @@ class LinkedList(SLinkedList):
 		return temp
 
 	def grp_reverse(self, head, n):
+		"""
+		Method to reverse node in a pair of n
+
+		:param head: Starting Node
+		:param n: Number of Node to be reversed
+		"""
 		if head is None:
 			return None
 		current = head
@@ -253,7 +259,7 @@ if __name__ == '__main__':
 	print(llist.head.data)
 	print('performing group reverse')
 	llist.listprint()
-	llist.grp_reverse(llist.head, 2)
+	llist.head = llist.grp_reverse(llist.head, 2)
 	llist.listprint()
 	print(f'Length of the Linked List is: {llist.get_len()}.')
 
@@ -265,5 +271,3 @@ if __name__ == '__main__':
 		llist.listprint()
 	except AttributeError as ex:
 		print(ex)
-
-
