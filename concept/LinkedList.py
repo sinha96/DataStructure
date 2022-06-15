@@ -34,7 +34,10 @@ class SLinkedList:
         :param data: new data to be inserted
 
         """
-        new_node = Node(data)
+        if type(data) != type(Node):
+            new_node = Node(data)
+        else:
+            new_node = data
         new_node.next = self.head
         self.head = new_node
 
