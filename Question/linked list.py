@@ -16,6 +16,7 @@ from DataStructure import SLinkedList, Node
 # 13. Detect loop in a linked list and number of node in the loop
 
 
+
 class LinkedList(SLinkedList):
 	def __init__(self):
 		super().__init__()
