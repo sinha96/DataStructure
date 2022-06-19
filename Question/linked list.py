@@ -1,4 +1,4 @@
-from DataStructure import SLinkedList, Node
+from concept import SLinkedList, Node
 
 
 # 1. Write a function to delete a Linked List
@@ -14,7 +14,6 @@ from DataStructure import SLinkedList, Node
 # 11. Find the middle of a given linked list
 # 12. Write a function that counts the number of times a given int occurs in a Linked List
 # 13. Detect loop in a linked list and number of node in the loop
-
 
 
 class LinkedList(SLinkedList):
