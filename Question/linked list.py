@@ -14,7 +14,8 @@ from concept import SLinkedList, Node
 # 11. Find the middle of a given linked list
 # 12. Write a function that counts the number of times a given int occurs in a Linked List
 # 13. Detect loop in a linked list and number of node in the loop
-
+# 14. Check if a linked list is palindrome or not
+# 15. Swap nodes in a linked list without swapping data
 
 class LinkedList(SLinkedList):
 	def __init__(self):
@@ -271,6 +272,27 @@ class LinkedList(SLinkedList):
 			return f"Found loop in the Linked list with length {node_counter}"
 		return "Didn't found any loop in the linked list"
 
+	def replace_node(self, node, data):
+		"""
+		Method to replace a node without replace the data
+		:param node: Inserting node
+		:param data: data of the node to be replaced
+		:return: None
+		"""
+		head = self.head
+		prev = None
+		breaker = True
+		while head is not None and breaker:
+			if head.data == data:
+				breaker = False
+				break
+			prev = head
+			head = head.next
+		if head is None or prev is None:
+			return 1
+		prev.next = node
+		node.next = head.next
+
 
 if __name__ == '__main__':
 	llist = LinkedList()
@@ -280,9 +302,15 @@ if __name__ == '__main__':
 			llist.at_begining(i)
 		else:
 			llist.at_begining(i ** 2)
-	llist.head.next.next.next.next = llist.head  # adding loop in linked list
-	# llist.listprint()
-	print(llist.loop_detector())
+	n = Node(10001)
+	llist.listprint()
+	llist.replace_node(n, 2)
+	llist.listprint()
+	llist.replace_node(n, 64)
+	llist.listprint()
+# llist.head.next.next.next.next = llist.head  # adding loop in linked list
+# llist.listprint()
+# print(llist.loop_detector())
 # print(llist.middle_element())
 # print(llist.counter(node=llist.head, data=3))
 # if llist.search(llist.head, 3):
