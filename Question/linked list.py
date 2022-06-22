@@ -288,10 +288,14 @@ class LinkedList(SLinkedList):
 				break
 			prev = head
 			head = head.next
-		if head is None or prev is None:
+		if head is None:
 			return 1
-		prev.next = node
-		node.next = head.next
+		elif prev is None:
+			node.next = head.next
+			self.head = node
+		else:
+			prev.next = node
+			node.next = head.next
 
 
 if __name__ == '__main__':
@@ -303,10 +307,13 @@ if __name__ == '__main__':
 		else:
 			llist.at_begining(i ** 2)
 	n = Node(10001)
+	n2 = Node(101)
 	llist.listprint()
 	llist.replace_node(n, 2)
 	llist.listprint()
 	llist.replace_node(n, 64)
+	llist.listprint()
+	llist.replace_node(n2, 9)
 	llist.listprint()
 # llist.head.next.next.next.next = llist.head  # adding loop in linked list
 # llist.listprint()
