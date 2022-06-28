@@ -1,4 +1,4 @@
-from DataStructure import SLinkedList, Node
+from concept import SLinkedList, Node
 
 
 # 1. Write a function to delete a Linked List
@@ -14,7 +14,8 @@ from DataStructure import SLinkedList, Node
 # 11. Find the middle of a given linked list
 # 12. Write a function that counts the number of times a given int occurs in a Linked List
 # 13. Detect loop in a linked list and number of node in the loop
-# 14. linked list is palindrome
+# 14. Check if a linked list is palindrome or not
+# 15. Swap nodes in a linked list without swapping data
 
 class LinkedList(SLinkedList):
 	def __init__(self):
@@ -263,7 +264,7 @@ class LinkedList(SLinkedList):
 			unique_nodes.add(node)
 			node = node.next
 		print('initiating node counting')
-		while loop_start not in loop_node and loop_start:
+		while loop_start not in loop_node:
 			node_counter += 1
 			loop_node.add(loop_start)
 			loop_start = loop_start.next
@@ -271,15 +272,30 @@ class LinkedList(SLinkedList):
 			return f"Found loop in the Linked list with length {node_counter}"
 		return "Didn't found any loop in the linked list"
 
-	def is_palindrome(self):
-		data = list()
-		node = self.head
-		while node is not None:
-			data.append(node.data)
-			node = node.next
-		if data == data[::-1]:
-			return True
-		return False
+	def replace_node(self, node, data):
+		"""
+		Method to replace a node without replace the data
+		:param node: Inserting node
+		:param data: data of the node to be replaced
+		:return: None
+		"""
+		head = self.head
+		prev = None
+		breaker = True
+		while head is not None and breaker:
+			if head.data == data:
+				breaker = False
+				break
+			prev = head
+			head = head.next
+		if head is None:
+			return 1
+		elif prev is None:
+			node.next = head.next
+			self.head = node
+		else:
+			prev.next = node
+			node.next = head.next
 
 
 if __name__ == '__main__':
@@ -290,37 +306,45 @@ if __name__ == '__main__':
 			llist.at_begining(i)
 		else:
 			llist.at_begining(i ** 2)
-	# llist.head.next.next.next.next = llist.head  # adding loop in linked list
+	n = Node(10001)
+	n2 = Node(101)
 	llist.listprint()
-	print(llist.loop_detector())
-	print(llist.is_palindrome())
-	print(llist.middle_element())
-	print(llist.counter(node=llist.head, data=3))
-	if llist.search(llist.head, 3):
-		print('Present')
-	else:
-		print('Absent')
-	print(f'{llist.iloc(1)} At 2nd index of linked list')
-	llist.swap(4, 1)
+	llist.replace_node(n, 2)
 	llist.listprint()
-	llist.remove_duplicates(llist.head)
+	llist.replace_node(n, 64)
 	llist.listprint()
-	llist.swap_pairwise()
+	llist.replace_node(n2, 9)
 	llist.listprint()
-	llist.to_front()
-	llist.listprint()
-	print(llist.head.data)
-	print('performing group reverse')
-	llist.listprint()
-	llist.head = llist.grp_reverse(llist.head, 2)
-	llist.listprint()
-	print(f'Length of the Linked List is: {llist.get_len()}.')
-
-	print("Deleting linked list")
-	llist.delete()
-
-	print("Linked list deleted")
-	try:
-		llist.listprint()
-	except AttributeError as ex:
-		print(ex)
+# llist.head.next.next.next.next = llist.head  # adding loop in linked list
+# llist.listprint()
+# print(llist.loop_detector())
+# print(llist.middle_element())
+# print(llist.counter(node=llist.head, data=3))
+# if llist.search(llist.head, 3):
+# 	print('Present')
+# else:
+# 	print('Absent')
+# print(f'{llist.iloc(1)} At 2nd index of linked list')
+# llist.swap(4, 1)
+# llist.listprint()
+# llist.remove_duplicates(llist.head)
+# llist.listprint()
+# llist.swap_pairwise()
+# llist.listprint()
+# llist.to_front()
+# llist.listprint()
+# print(llist.head.data)
+# print('performing group reverse')
+# llist.listprint()
+# llist.head = llist.grp_reverse(llist.head, 2)
+# llist.listprint()
+# print(f'Length of the Linked List is: {llist.get_len()}.')
+#
+# print("Deleting linked list")
+# llist.delete()
+#
+# print("Linked list deleted")
+# try:
+# 	llist.listprint()
+# except AttributeError as ex:
+# 	print(ex)
