@@ -16,6 +16,7 @@ from concept import SLinkedList, Node
 # 13. Detect loop in a linked list and number of node in the loop
 # 14. Check if a linked list is palindrome or not
 # 15. Swap nodes in a linked list without swapping data
+# 16. Reverse a linked list
 
 class LinkedList(SLinkedList):
 	def __init__(self):
@@ -297,6 +298,25 @@ class LinkedList(SLinkedList):
 			prev.next = node
 			node.next = head.next
 
+	def reverse(self):
+		cur = self.head
+		prev = None
+		while cur is not None:
+			nxt = cur.next
+			cur.next = prev
+			prev = cur
+			cur = nxt
+
+		self.head = prev
+
+	def reverse_optimised(self, head):
+		if head is None or head.next is None:
+			return head
+		rest = self.reverse_optimised(head.next)
+		head.next.next = head
+		head.next = None
+
+		return rest
 
 if __name__ == '__main__':
 	llist = LinkedList()
@@ -306,6 +326,12 @@ if __name__ == '__main__':
 			llist.at_begining(i)
 		else:
 			llist.at_begining(i ** 2)
+	llist.listprint()
+	llist.reverse()
+	llist.listprint()
+	llist.listprint()
+	llist.head = llist.reverse_optimised(llist.head)
+	llist.listprint()
 	n = Node(10001)
 	n2 = Node(101)
 	llist.listprint()
