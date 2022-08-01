@@ -57,4 +57,3 @@ if __name__ == '__main__':
 	print(tree.inorder(tree))
 	print(tree.pre_order(tree))
 	print(tree.post_order(tree))
-
